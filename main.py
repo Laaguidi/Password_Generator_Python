@@ -17,6 +17,10 @@ def generate_password(length=12, include_uppercase=True, include_lowercase=True,
     """
 
     characters = ""
+    ##include_uppercase is a boolean variable (True or False).
+    ## If include_uppercase is True, the uppercase alphabet (from 
+    ## string.ascii_uppercase, which is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') ## is added to the characters pool.
+
     if include_uppercase:
         characters += string.ascii_uppercase
     if include_lowercase:
@@ -28,7 +32,11 @@ def generate_password(length=12, include_uppercase=True, include_lowercase=True,
 
     if not characters:
         raise ValueError("At least one character set must be selected.")
-
+    
+    #''.join() takes a list of characters and combines (joins) them into a single string.
+    #This part is a for loop that runs length times.
+    #_ is a placeholder variable (conventionally used when the loop variable isn’t needed).
+    #range(length) means the loop will run as many times as the password's length (default is 12).
     password = ''.join(random.choice(characters) for _ in range(length))
     return password
 
